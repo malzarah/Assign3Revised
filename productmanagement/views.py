@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 # Create your views here.
@@ -12,6 +13,10 @@ from django.views.generic import ListView, UpdateView, CreateView
 
 from .models import Customer, Product, supplier, Countrie
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+def login(request):
+    return render(request, "registration/login.html")
 
 def homepage(request):
     print('yessss')
@@ -39,45 +44,47 @@ class CountryListView(ListView):
     template_name = 'assign3static/country_list.html'
 
 
-class CustomerUpdateView(UpdateView):
+class CustomerUpdateView(LoginRequiredMixin,UpdateView):
     model = Customer
     fields = ('first_name', 'last_name', 'city', 'state', 'zip', 'notes')
     template_name = 'assign3static/edit_customer.html'
     success_url = reverse_lazy('customer_list')
-    # login_url = 'login'
+    login_url = ''
 
-
-class productUpdateView(UpdateView):
+class productUpdateView(LoginRequiredMixin,UpdateView):
     model = Product
     fields = ('product_name', 'product_manufacturer', 'product_price', 'product_available_status')
     template_name = 'assign3static/edit_product.html'
     success_url = reverse_lazy('product_list')
-    # login_url = 'login'
+    login_url = 'login'
 
 
 
-class SupplierUpdateView(UpdateView):
+
+
+class SupplierUpdateView(LoginRequiredMixin,UpdateView):
     model = supplier
     fields = ('supplier_name', 'supplier_created')
     template_name = 'assign3static/edit_supplier.html'
     success_url = reverse_lazy('supplier_list')
-    # login_url = 'login'
+    login_url = 'login'
 
 
 
-class CountryUpdateView(UpdateView):
+class CountryUpdateView(LoginRequiredMixin,UpdateView):
     model = Countrie
     fields = ('country_code', 'country_name')
     template_name = 'assign3static/edit_country.html'
-    # login_url = 'login'
+    login_url = 'login'
     success_url = reverse_lazy('country_list')
 
-class CustomerCreateView(CreateView):
+
+class CustomerCreateView(LoginRequiredMixin,CreateView):
     model = Customer
     fields = ('first_name', 'last_name', 'city', 'state', 'zip', 'notes')
     template_name = 'assign3static/add_country.html'
     success_url = reverse_lazy('customer_list')
-    # login_url = 'login'
+    login_url = 'login'
 
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
@@ -85,6 +92,7 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
     fields = ('product_name', 'product_manufacturer', 'product_price', 'product_available_status')
     template_name = 'assign3static/add_product.html'
     success_url = reverse_lazy('product_list')
+    login_url = 'login'
 
 
 
@@ -93,6 +101,8 @@ class SupplierCreateView(LoginRequiredMixin, CreateView):
     fields = ('supplier_name', 'supplier_created')
     template_name = 'assign3static/add_supplier.html'
     success_url = reverse_lazy('common:supplier_list')
+    login_url = 'login'
+
 
 
 
@@ -101,4 +111,5 @@ class CountryCreateView(LoginRequiredMixin, CreateView):
     fields = ('country_code', 'country_name')
     template_name = 'assign3static/add_country.html'
     success_url = reverse_lazy('country_list')
+    login_url = 'login'
 
