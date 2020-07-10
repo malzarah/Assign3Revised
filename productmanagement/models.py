@@ -33,14 +33,14 @@ class Customer(models.Model):
     def get_absolute_url(self):
         return reverse('location', args=[str(self.id)])
 
-class Country(models.Model):
+class Countrie(models.Model):
     country_code=models.CharField(max_length=100,default="none")
-    continet_name=models.CharField(max_length=100)
+    continent_name=models.CharField(max_length=100)
 
 class supplier(models.Model):
     supplier_name=models.CharField(max_length=100,default="none")
     supplier_created=models.DateTimeField(auto_now_add=True)
-    supplier_country_code=models.ForeignKey(Country, on_delete=models.CASCADE)
+    supplier_country_code=models.ForeignKey(Countrie, on_delete=models.CASCADE)
 
 class Product(models.Model):
     product_name=models.CharField(max_length=50,  default="none")
