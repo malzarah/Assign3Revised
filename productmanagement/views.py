@@ -43,6 +43,7 @@ class CustomerUpdateView(UpdateView):
     model = Customer
     fields = ('first_name', 'last_name', 'city', 'state', 'zip', 'notes')
     template_name = 'assign3static/edit_customer.html'
+    success_url = reverse_lazy('customer_list')
     # login_url = 'login'
 
 
@@ -50,6 +51,7 @@ class productUpdateView(UpdateView):
     model = Product
     fields = ('product_name', 'product_manufacturer', 'product_price', 'product_available_status')
     template_name = 'assign3static/edit_product.html'
+    success_url = reverse_lazy('product_list')
     # login_url = 'login'
 
 
@@ -58,6 +60,7 @@ class SupplierUpdateView(UpdateView):
     model = supplier
     fields = ('supplier_name', 'supplier_created')
     template_name = 'assign3static/edit_supplier.html'
+    success_url = reverse_lazy('supplier_list')
     # login_url = 'login'
 
 
@@ -67,12 +70,13 @@ class CountryUpdateView(UpdateView):
     fields = ('country_code', 'country_name')
     template_name = 'assign3static/edit_country.html'
     # login_url = 'login'
+    success_url = reverse_lazy('country_list')
 
 class CustomerCreateView(CreateView):
     model = Customer
     fields = ('first_name', 'last_name', 'city', 'state', 'zip', 'notes')
     template_name = 'assign3static/add_country.html'
-    success_url = reverse_lazy('common:user_list')
+    success_url = reverse_lazy('customer_list')
     # login_url = 'login'
 
 

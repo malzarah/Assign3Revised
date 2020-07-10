@@ -8,22 +8,22 @@
               <span class="font-weight-bold">{{ user.first_name}} {{ user.last_name }}</span>
           </div>
           <div class="card-body">
-            <span class="font-muted">email: {{ user.first_name }} </span>
+            <span class="font-muted">  First NameName {{ user.first_name }} </span>
             <br>
-            <span class="font-muted">Work Phone: {{ user.last_name }}</span>
+            <span class="font-muted">Last Name {{ user.last_name }}</span>
             <br>
-            <span class="font-muted">Mobile Phone: {{ user.city }}</span>
+            <span class="font-muted">City: {{ user.city }}</span>
               <br>
-            <span class="font-muted">Mobile Phone: {{ user.state }}</span>
+            <span class="font-muted">State: {{ user.state }}</span>
               <br>
-            <span class="font-muted">Mobile Phone: {{ user.zip }}</span>
+            <span class="font-muted">Zip: {{ user.zip }}</span>
 
               <br>
-            <span class="font-muted">Mobile Phone: {{ user.notes }}</span>
+            <span class="font-muted">Notes: {{ user.notes }}</span>
 
           </div>
           <div class="card-footer">
-
+ <a href="{% url 'customer_edit' pk=user.id %}"><span class="btn btn-primary">Edit</span></a>
           </div>
 
       </div>
