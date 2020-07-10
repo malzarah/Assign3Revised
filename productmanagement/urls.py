@@ -16,5 +16,6 @@ path('country/edit/<int:pk>/',views.CountryUpdateView.as_view(), name='country_e
     path("products/new/", views.ProductCreateView.as_view(), name='products_create'),
     path("suppliers/new/", views.SupplierCreateView.as_view(), name='suppliers_create'),
     path("country/new/", views.CountryCreateView.as_view(), name='country_create'),
+    path('login', views.login,name='login')
 
 ]

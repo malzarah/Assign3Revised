@@ -14,7 +14,7 @@
             <span class="font-muted">Country_Code: {{ user.supplier_country_code_id }}</span>
           </div>
           <div class="card-footer">
-
+<a href="{% url 'supplier_edit' pk=user.id %}"><span class="btn btn-primary">Edit</span></a>
           </div>
 
       </div>
